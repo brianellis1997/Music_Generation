@@ -12,7 +12,7 @@ import numpy as np
 from model.plain_transformer import PlainTransformer
 from convert2midi import skyline_event_to_midi, TempoEvent
 from utils import pickle_load
-from inference_utils import generate_plain_xl
+from inference_utils import generate_plain_xl, user_input
 
 config_path = sys.argv[1]
 out_dir = sys.argv[2]
@@ -21,8 +21,7 @@ n_pieces = int(sys.argv[3]) if len(sys.argv) > 3 else 20
 config = yaml.load(open(config_path, 'r'), Loader=yaml.FullLoader)
 ckpt_dir = config['output']['ckpt_dir']
 
-max_bars = 128
-temp = 1.2
+max_bars, temp = user_input()
 top_p = 0.97
 max_dec_len = 2400
 print ('[nucleus parameters] t = {}, p = {}'.format(temp, top_p))
