@@ -8,6 +8,15 @@ from utils import tensor_to_numpy
 
 
 ########################################
+# User input utilities
+########################################
+# User input for max bars and temperature (randomness)
+def user_input():
+    max_bars = int(input('Please input max bars: '))
+    temp = float(input('Please input temperature (randomness): '))
+    return (max_bars, temp)
+
+########################################
 # sampling utilities
 ########################################
 def temperature(logits, temperature):
