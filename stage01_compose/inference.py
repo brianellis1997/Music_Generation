@@ -21,9 +21,9 @@ n_pieces = int(sys.argv[3]) if len(sys.argv) > 3 else 20
 config = yaml.load(open(config_path, 'r'), Loader=yaml.FullLoader)
 ckpt_dir = config['output']['ckpt_dir']
 
-max_bars = user_input(max_bars)
-temp = user_input(temp)
-top_p = user_input(top_p)
+max_bars = user_input('max_bars')
+temp = user_input('temp')
+top_p = user_input('top_p')
 max_dec_len = 2400
 print ('[nucleus parameters] t = {}, p = {}'.format(temp, top_p))
 
@@ -145,7 +145,7 @@ if __name__ == '__main__':
       continue
 
     if not use_prompt:
-      tempo_range = range(user_input(lower_tempo), user_input(upper_tempo), 3)
+      tempo_range = range(user_input('lower_tempo'), user_input('upper_tempo'), 3)
       tempo = random.choice(
         tempo_range
       )
