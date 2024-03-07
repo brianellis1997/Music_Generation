@@ -10,11 +10,17 @@ from utils import tensor_to_numpy
 ########################################
 # User input utilities
 ########################################
-# User input for max bars and temperature (randomness)
-def user_input():
-    max_bars = int(input('Please input max bars: '))
-    temp = float(input('Please input temperature (randomness): '))
-    return (max_bars, temp)
+# User input for variables including max_bars, temp, etc.
+def user_input(variable):
+    while True:
+        try:
+            if variable != 'temp':
+                value = int(input(f'Please input {variable}: '))
+            else:
+                value = float(input('Please input temperature (randomness): '))
+            return value
+        except ValueError:
+            print("Invalid input. Please enter a valid numeric value.")
 
 ########################################
 # sampling utilities
