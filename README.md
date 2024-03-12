@@ -1,11 +1,5 @@
-# Compose & Embellish: A Transformer-based Piano Generation System
-Official PyTorch implementation of the paper:
- - Shih-Lun Wu and Yi-Hsuan Yang  
-  **Compose & Embellish: Well-Structured Piano Performance Generation via A Two-Stage Approach**  
-  _Int. Conf. on Acoustics, Speech and Signal Processing (ICASSP)_, 2023  
-   [**Paper**](https://arxiv.org/abs/2209.08212) | [**Audio demo (Google Drive)**](https://bit.ly/comp_embel) | [**Model weights**](https://huggingface.co/slseanwu/compose-and-embellish-pop1k7)
-  ![image](https://user-images.githubusercontent.com/31909739/223012496-1c0f3c3c-1aaf-404a-b6ae-a529e8d395d1.png)
-
+# Music Generation: Semantic User Input
+Based on the parent paper Compose & Embellish: A Transformer-based Piano Generation System by Shih-Lun Wu and Yi-Hsuan Yang.  
 
 ## Prerequisites
   - **Python 3.8** and **CUDA 10.2** recommended
