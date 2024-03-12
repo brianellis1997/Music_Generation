@@ -14,10 +14,12 @@ from utils import tensor_to_numpy
 def user_input(variable):
     while True:
         try:
-            if variable != 'temp':
-                value = int(input(f'Please input {variable}: '))
-            else:
-                value = float(input('Please input temperature (randomness): '))
+            if variable == 'temp':
+                value = int(input(f'Please input temperature (randomness) between 0.5 and 4: {variable}: '))
+            elif variable == 'max_bars':
+                value = int(input(f'Please input max_bars between 32 and 112: {variable}'))
+            # else:
+            #     value = float(input('Please input temperature (randomness): '))
             return value
         except ValueError:
             print("Invalid input. Please enter a valid numeric value.")
