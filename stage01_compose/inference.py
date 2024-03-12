@@ -145,7 +145,7 @@ if __name__ == '__main__':
       continue
 
     if not use_prompt:
-      tempo_range = range(user_input('lower_tempo'), user_input('upper_tempo'))
+      tempo_range = range(user_input('lower_tempo'), user_input('upper_tempo'), 3)
       tempo = random.choice(
         tempo_range
       )
