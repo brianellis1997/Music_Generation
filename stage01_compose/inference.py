@@ -23,7 +23,7 @@ ckpt_dir = config['output']['ckpt_dir']
 
 max_bars = user_input('max_bars')
 temp = user_input('temp')
-top_p = user_input('top_p')
+top_p = 0.97
 max_dec_len = 2400
 print ('[nucleus parameters] t = {}, p = {}'.format(temp, top_p))
 
