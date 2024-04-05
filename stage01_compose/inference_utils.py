@@ -15,16 +15,22 @@ def user_input(variable):
     while True:
         try:
             if variable == 'temp':
-                value = int(input(f'Please input temperature (randomness) between 0.5 and 4: {variable}: '))
+                value = float(input(f'Please input temperature (randomness) between 0.5 and 4: {variable}: '))
+                if not (0.5 <= value <= 4):
+                    raise ValueError("The temperature (randomness) must be between 0.5 and 4.")
             elif variable == 'max_bars':
-                value = int(input(f'Please input max_bars between 32 and 112: {variable}'))
+                value = int(input(f'Please input max_bars between 32 and 112: {variable}: '))
+                if not (32 <= value <= 112):
+                    raise ValueError("The max_bars must be between 32 and 112.")
             elif variable == 'tempo':
-                value = int(input(f'Please input tempo between 65 and 165 as a multiple of 3: {variable}'))
-            # else:
-            #     value = float(input('Please input temperature (randomness): '))
+                value = int(input(f'Please input tempo between 65 and 165 as a multiple of 3: {variable}: '))
+                if not (65 <= value <= 165 and value % 3 == 0):
+                    raise ValueError("The tempo must be between 65 and 165 and a multiple of 3.")
+            else:
+                raise ValueError("Invalid variable name.")
             return value
-        except ValueError:
-            print("Invalid input. Please enter a valid numeric value.")
+        except ValueError as e:
+            print(f"Invalid input. {str(e)} Please enter a valid numeric value.")
 
 ########################################
 # sampling utilities
