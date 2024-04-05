@@ -18,6 +18,8 @@ def user_input(variable):
                 value = int(input(f'Please input temperature (randomness) between 0.5 and 4: {variable}: '))
             elif variable == 'max_bars':
                 value = int(input(f'Please input max_bars between 32 and 112: {variable}'))
+            elif variable == 'tempo':
+                value = int(input(f'Please input tempo between 65 and 165 as a multiple of 3: {variable}'))
             # else:
             #     value = float(input('Please input temperature (randomness): '))
             return value
