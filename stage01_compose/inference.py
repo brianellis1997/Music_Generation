@@ -145,10 +145,11 @@ if __name__ == '__main__':
       continue
 
     if not use_prompt:
-      tempo_range = range(65, 165, 3)
-      tempo = random.choice(
-        tempo_range
-      )
+      # tempo_range = range(65, 165, 3) <- Parent paper code
+      # tempo = random.choice(
+      #   tempo_range
+      # )
+      tempo = user_input('tempo')
       orig_tempos = [
         TempoEvent(tempo, 0, 0)
       ]
