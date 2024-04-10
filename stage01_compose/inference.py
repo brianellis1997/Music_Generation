@@ -83,6 +83,7 @@ if __name__ == '__main__':
   event2idx, idx2event, vocab_size = \
     read_vocab(config['data']['vocab_path'])
   valid_tempos = get_valid_tempos(event2idx)
+  max_dec_len = 2400
 
   max_bars = user_input('max_bars')
   temp = user_input('temp')
