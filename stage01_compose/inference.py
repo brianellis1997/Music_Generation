@@ -19,30 +19,20 @@ out_dir = sys.argv[2]
 n_pieces = int(sys.argv[3]) if len(sys.argv) > 3 else 20
 
 config = yaml.load(open(config_path, 'r'), Loader=yaml.FullLoader)
-ckpt_dir = config['output']['ckpt_dir']
 
-max_bars = user_input('max_bars')
-temp = user_input('temp')
-top_p = 0.97
-max_dec_len = 2400
-print ('[nucleus parameters] t = {}, p = {}'.format(temp, top_p))
+def closest_tempo(user_tempo, valid_tempos):
+    return min(valid_tempos, key=lambda x: abs(x - user_tempo))
 
-torch.cuda.device(config['device'])
-
-# for generation w/ melody prompts
-use_prompt = False
-prompt_bars = 8
-
+def get_valid_tempos(event2idx):
+    return [int(event.split('_')[1]) for event in event2idx if event.startswith("Tempo_")]
 
 def read_vocab(vocab_file):
-  event2idx, idx2event = pickle_load(vocab_file)
-  orig_vocab_size = len(event2idx)
-  pad_token = orig_vocab_size
-  event2idx['PAD_None'] = pad_token
-  vocab_size = pad_token + 1
-
-  return event2idx, idx2event, vocab_size
-
+    event2idx, idx2event = pickle_load(vocab_file)
+    orig_vocab_size = len(event2idx)
+    pad_token = orig_vocab_size
+    event2idx['PAD_None'] = pad_token
+    vocab_size = pad_token + 1
+    return event2idx, idx2event, vocab_size
 
 def dump_midi(words, idx2event, output_midi_path=None, 
               rfreq_cls=None, polyph_cls=None, output_event_path=None,
@@ -90,6 +80,12 @@ if __name__ == '__main__':
 
   event2idx, idx2event, vocab_size = \
     read_vocab(config['data']['vocab_path'])
+  valid_tempos = get_valid_tempos(event2idx)
+
+  max_bars = user_input('max_bars')
+  temp = user_input('temp')
+  user_tempo = user_input('tempo')  # Correct placement for user_tempo
+  closest_valid_tempo = closest_tempo(user_tempo, valid_tempos)  # Now correctly defined
 
   if use_prompt:
     prompt_pieces = pickle_load(config['data']['val_split'])
@@ -143,15 +139,14 @@ if __name__ == '__main__':
     if os.path.exists(os.path.join(out_dir, out_name + '.mid')):
       print ('[info] {} exists, skipping ...'.format(out_name))
       continue
-
+      
     if not use_prompt:
       # tempo_range = range(65, 165, 3) <- Parent paper code
       # tempo = random.choice(
       #   tempo_range
       # )
-      tempo = user_input('tempo')
       orig_tempos = [
-        TempoEvent(tempo, 0, 0)
+        TempoEvent(closest_valid_tempo, 0, 0)
       ]
       print ('[global tempo]', orig_tempos[0].tempo)
     else:
