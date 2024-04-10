@@ -21,6 +21,8 @@ n_pieces = int(sys.argv[3]) if len(sys.argv) > 3 else 20
 config = yaml.load(open(config_path, 'r'), Loader=yaml.FullLoader)
 
 use_prompt = False
+top_p = 0.97
+prompt_bars=8
 
 def closest_tempo(user_tempo, valid_tempos):
     return min(valid_tempos, key=lambda x: abs(x - user_tempo))
