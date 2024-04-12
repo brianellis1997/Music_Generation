@@ -16,8 +16,14 @@ Based on the parent paper Compose & Embellish: A Transformer-based Piano Generat
 
 [Download and listen to the parent paper output (audio file)](https://github.com/brianellis1997/Music_Generation/raw/main/Generated_Output/samp_01_2stage_samp01%20(1)%20-%20Chord-11_m.wav)
 
+Here is a link to download one of our favorite user input specified outputs. The output is so odd because of the slow tempo and increase in temp (randomness).
+The parameters specified were:
+- `max_bars `: 77
+- `temp`: 2.5
+- `tempo`: 135
 [Download and listen to the user input output (audio file)](https://github.com/brianellis1997/Music_Generation/raw/main/Generated_Output/User_Input_Generated.wav)
 
+Have fun creating your own compositions!
 
 ## Acknowledgements
 We would like to thank the following people for their open-source implementations that paved the way for our work:
