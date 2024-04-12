@@ -14,9 +14,10 @@ Based on the parent paper Compose & Embellish: A Transformer-based Piano Generat
     git clone https://huggingface.co/slseanwu/compose-and-embellish-pop1k7
     ```
 
-![Parent Paper Output](/Generated_Output/'samp_01_2stage_samp01 (1) - Chord-11_m.wav')
+[Download the parent paper output](https://github.com/brianellis1997/Music_Generation/raw/main/Generated_Output/samp_01_2stage_samp01%20(1)%20-%20Chord-11_m.wav)
 
-![Parent Paper Output](/Generated_Output/'User_Input_Generated.wav')
+[Download the user input output](https://github.com/brianellis1997/Music_Generation/raw/main/Generated_Output/User_Input_Generated.wav)
+
 
 ## Acknowledgements
 We would like to thank the following people for their open-source implementations that paved the way for our work:
